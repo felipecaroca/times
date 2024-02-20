@@ -1,0 +1,76 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type RacewayModel {
+  id: ID!
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  name: String!
+  coords: String!
+  betterTimes: [BetterTimeModel]
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type UserModel {
+  id: ID!
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  email: String!
+  name: String
+  sub: String!
+  betterTimes: [BetterTimeModel]
+}
+
+type BetterTimeModel {
+  id: ID!
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  racewayId: ID!
+  raceway: RacewayModel
+  userId: ID!
+  user: UserModel
+  minutes: Int!
+  seconds: Int!
+  milliseconds: Int!
+}
+
+type Query {
+  user(id: ID!): UserModel!
+  betterTimesByUser(userId: ID!): [BetterTimeModel!]!
+  raceways: [RacewayModel!]!
+  raceway(id: ID!): RacewayModel!
+}
+
+type Mutation {
+  createUser(input: CreateUserDTO!): UserModel!
+  deleteUser(id: ID!): Boolean!
+  createBetterTime(input: CreateBetterTimeDTO!): BetterTimeModel!
+  createRaceway(input: CreateRacewayDTO!): RacewayModel!
+}
+
+input CreateUserDTO {
+  email: String!
+  name: String
+  sub: String!
+}
+
+input CreateBetterTimeDTO {
+  racewayId: ID!
+  userId: ID!
+  minutes: Int!
+  seconds: Int!
+  milliseconds: Int!
+}
+
+input CreateRacewayDTO {
+  name: String!
+  coords: String!
+}

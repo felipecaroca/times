@@ -1,0 +1,17 @@
+{
+  "name": "times",
+  "version": "1.0.0",
+  "description": "repository for karting times saver",
+  "main": "index.js",
+  "author": "felipe.caroca.dev@gmail.com",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "api": "turbo api",
+    "android": "cd apps/times-app && yarn android"
+  },
+  "workspaces": [
+    "apps/*"
+  ]
+}
