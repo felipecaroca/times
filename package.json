@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "turbo dev",
     "api": "turbo api",
-    "android": "cd apps/times-app && yarn android"
+    "android": "cd apps/times-app && yarn android",
+    "test:e2e": "cd apps/times-api && yarn test:e2e"
   },
   "workspaces": [
     "apps/*"

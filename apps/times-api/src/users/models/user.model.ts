@@ -1,7 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql'
 
-import { BetterTimeModel } from 'src/bettertimes/models/bettertime.model'
-import { BaseModel } from 'src/global/models/base.model'
+import { BetterTimeModel } from '../../bettertimes/models/bettertime.model'
+import { BaseModel } from '../../global/models/base.model'
 
 @ObjectType()
 export class UserModel extends BaseModel {

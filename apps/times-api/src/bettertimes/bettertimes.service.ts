@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 
-import { PrismaService } from 'src/prismamodule/prismamodule.service'
+import { PrismaService } from '../prismamodule/prismamodule.service'
 
 import { CreateBetterTimeDTO } from './dto/createbettertime.dto'
 import { BetterTimeModel } from './models/bettertime.model'

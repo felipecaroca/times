@@ -1,0 +1,13 @@
+export const usersData = [{
+  email: 'felipe.caroca.dev@gmail.com',
+  name: 'felipe caroca',
+  sub: '123456789',
+}, {
+  email: 'usuario.2@gmail.com',
+  name: 'usuario 2',
+  sub: '987654321',
+}, {
+  email: 'usuario.3@gmail.com',
+  name: 'usuario 3',
+  sub: '123789456',
+}]

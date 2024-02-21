@@ -1,9 +1,8 @@
 import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql'
 
-import { CreateRacewayDTO } from '../dto/createraceway.dto'
-import { RacewaysService } from '../raceway.service'
-
-import { RacewayModel } from './raceway.model'
+import { CreateRacewayDTO } from './dto/createraceway.dto'
+import { RacewayModel } from './models/raceway.model'
+import { RacewaysService } from './raceway.service'
 
 
 @Resolver(() => RacewayModel)

@@ -1,6 +1,6 @@
 export const racewayQuery = `
-query Raceway($racewayId: ID!) {
-  raceway(id: $racewayId) {
+query Raceway($id: ID!) {
+  raceway(id: $id) {
     id
     createdAt
     updatedAt

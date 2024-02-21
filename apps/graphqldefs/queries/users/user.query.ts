@@ -1,6 +1,6 @@
 export const userQuery = `
-query User($userId: ID!) {
-  user(id: $userId) {
+query User($id: ID!) {
+  user(id: $id) {
     id
     createdAt
     updatedAt

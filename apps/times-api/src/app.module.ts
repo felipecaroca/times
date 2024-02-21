@@ -20,7 +20,7 @@ import { AppService } from './app.service'
     BetterTimesModule,
     RacewaysModule,
     ConfigModule.forRoot({
-      envFilePath: '.env',
+      envFilePath: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,

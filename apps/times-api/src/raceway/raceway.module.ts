@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
 
-import { RacewaysResolver } from './models/raceway.resolver'
+import { RacewaysResolver } from './raceway.resolver'
 import { RacewaysService } from './raceway.service'
 
 @Module({

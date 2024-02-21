@@ -1,8 +1,8 @@
 import { Field, ID, Int, ObjectType } from '@nestjs/graphql'
 
-import { BaseModel } from 'src/global/models/base.model'
-import { RacewayModel } from 'src/raceway/models/raceway.model'
-import { UserModel } from 'src/users/models/user.model'
+import { BaseModel } from '../../global/models/base.model'
+import { RacewayModel } from '../../raceway/models/raceway.model'
+import { UserModel } from '../../users/models/user.model'
 
 
 @ObjectType()

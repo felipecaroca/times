@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
 
-import { PrismaService } from 'src/prismamodule/prismamodule.service'
+import { PrismaService } from '../prismamodule/prismamodule.service'
 
 import { CreateRacewayDTO } from './dto/createraceway.dto'
 import { RacewayModel } from './models/raceway.model'

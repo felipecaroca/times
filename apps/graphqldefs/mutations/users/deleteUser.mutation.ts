@@ -1,5 +1,5 @@
 export const deleteUserMutation = `
-mutation DeleteUser($deleteUserId: ID!) {
-  deleteUser(id: $deleteUserId)
+mutation DeleteUser($id: ID!) {
+  deleteUser(id: $id)
 }
 `
