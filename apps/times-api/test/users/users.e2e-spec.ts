@@ -77,6 +77,24 @@ describe('users resolver', () => {
     })
   })
 
+  it('deleteUser', () => {
+    return graphqlRequest({
+      app,
+      send: {
+        query: deleteUserMutation,
+        variables: {
+          id: 'userId',
+        },
+      },
+      onResponse: ({ text }) => {
+
+        const response = JSON.parse(text)?.errors[0]?.message
+
+        expect(response).toBeDefined()
+      },
+    })
+  })
+
   afterAll(async () => {
     await app.close()
     await cleanDatabase(prisma)

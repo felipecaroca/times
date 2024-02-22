@@ -15,6 +15,7 @@ const runMongo = async (cb: (mongo: mongoose.Mongoose) => void) => {
 }
 
 beforeAll(async () => {
+  process.env.DATABASE_URL = `${process.env.DATABASE_URL}_test`
   await runMongo(async mongo => await mongo.connection.db.collection('User').insertOne(usersData[0]))
 })
 
