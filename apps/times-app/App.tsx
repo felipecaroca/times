@@ -1,17 +1,20 @@
 import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { StatusBar } from 'expo-status-bar'
 import { NativeBaseProvider } from 'native-base'
 
-import RacewaysScreen from './screens/Raceways'
+import NavigationStack from './navigation/NavigationStack'
 
 export default function App() {
   const config = { dependencies: { 'linear-gradient': LinearGradient } }
 
   return (
     <NativeBaseProvider config={config}>
-      <RacewaysScreen />
-      <StatusBar style="auto" />
+      <NavigationContainer>
+        <NavigationStack />
+        <StatusBar style="auto" />
+      </NavigationContainer>
     </NativeBaseProvider>
   )
 }

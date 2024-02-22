@@ -20,5 +20,5 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-  await runMongo(async mongo => await mongo.connection.db.collection('User').drop())
+  await runMongo(async mongo => await mongo.connection.db.collection('User').deleteMany())
 })
