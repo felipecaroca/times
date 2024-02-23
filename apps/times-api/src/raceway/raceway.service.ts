@@ -34,6 +34,10 @@ export class RacewaysService {
           include: {
             user: true,
           },
+          orderBy: [
+            { minutes: 'asc' },
+            { seconds: 'asc' },
+            { milliseconds: 'asc' }],
         },
       },
     })

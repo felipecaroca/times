@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { Pressable, Text } from 'native-base'
 
+import BetterTimesScreen from '../screens/BetterTimes'
 import RacewayScreen from '../screens/Raceway'
 import RacewaysScreen from '../screens/Raceways'
 
@@ -21,6 +22,7 @@ const NavigationStack = () => {
         component={RacewaysScreen}
       />
       <Stack.Screen name="raceway" component={RacewayScreen} />
+      <Stack.Screen name="betterTimes" component={BetterTimesScreen} />
     </Stack.Navigator>
   )
 }

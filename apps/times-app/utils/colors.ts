@@ -11,6 +11,13 @@ export const colors = {
     light: 'gray.400',
     pressed: 'gray.800',
   },
+  flatList: {
+    border: 'blue.200',
+  },
+  skeleton: {
+    start: 'gray.700',
+    end: 'white',
+  },
   success: {
     bg: '',
     text: '',

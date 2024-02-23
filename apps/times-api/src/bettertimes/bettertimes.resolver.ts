@@ -12,7 +12,9 @@ export class BetterTimesResolver {
   async createBetterTime(
     @Args('input', { type: () => CreateBetterTimeDTO }) input: CreateBetterTimeDTO,
   ): Promise<BetterTimeModel> {
-    return this.betterTimesService.create(input)
+    const userId = '65ce90e0c9e52fa504eee187' // TODO: remover cuando se tenga cuenta de usuario
+
+    return this.betterTimesService.create(input, userId)
   }
 
   @Query(() => [BetterTimeModel])

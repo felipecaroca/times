@@ -64,7 +64,6 @@ input CreateUserDTO {
 
 input CreateBetterTimeDTO {
   racewayId: ID!
-  userId: ID!
   minutes: Int!
   seconds: Int!
   milliseconds: Int!

@@ -1,29 +1,27 @@
-import { useQuery } from '@apollo/client'
-import { racewaysQuery } from '@graphqldefs'
 import { Box, ScrollView } from 'native-base'
 
-import { RacewayModel } from '../../../times-api/src/raceway/models/raceway.model'
+import Loading from '../../components/Loading'
 import PressableButton from '../../components/PressableButton'
 import { WithNavigation } from '../../generic/types/CustomFC'
-import { graphql } from '../../lib'
+import { useRaceways } from '../../hooks'
 
 const RacewaysScreen: WithNavigation = ({ navigation }) => {
-  const { data } = useQuery<{ raceways: RacewayModel[] }>(
-    graphql(racewaysQuery),
-  )
+  const { raceways, loadingRaceways } = useRaceways()
 
   return (
-    <Box safeArea>
-      <ScrollView>
-        {data?.raceways?.map(raceway => (
-          <PressableButton
-            key={raceway.id}
-            onClick={() => navigation?.navigate('raceway', raceway)}>
-            {raceway.name}
-          </PressableButton>
-        ))}
-      </ScrollView>
-    </Box>
+    <Loading isLoading={loadingRaceways}>
+      <Box safeArea>
+        <ScrollView>
+          {raceways.map(raceway => (
+            <PressableButton
+              key={raceway.id}
+              onClick={() => navigation?.navigate('raceway', raceway)}>
+              {raceway.name}
+            </PressableButton>
+          ))}
+        </ScrollView>
+      </Box>
+    </Loading>
   )
 }
 

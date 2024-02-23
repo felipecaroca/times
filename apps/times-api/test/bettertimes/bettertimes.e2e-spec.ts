@@ -41,7 +41,6 @@ describe('better times resolver', () => {
         variables: {
           input: {
             racewayId: raceway.id,
-            userId: user.id,
             minutes: 1,
             seconds: 25,
             milliseconds: 521,

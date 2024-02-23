@@ -12,9 +12,12 @@ export class BetterTimesService {
     private readonly prismaService: PrismaService,
   ) { }
 
-  async create(data: CreateBetterTimeDTO): Promise<BetterTimeModel> {
+  async create(data: CreateBetterTimeDTO, userId): Promise<BetterTimeModel> {
     return this.prismaService.betterTime.create({
-      data,
+      data: {
+        ...data,
+        userId,
+      },
     })
   }
 

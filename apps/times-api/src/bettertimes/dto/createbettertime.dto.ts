@@ -6,9 +6,6 @@ export class CreateBetterTimeDTO {
   @Field(() => ID)
   racewayId: string
 
-  @Field(() => ID)
-  userId: string
-
   @Field(() => Int)
   minutes: number
 
