@@ -1,0 +1,33 @@
+name: Run e2e tests
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    paths:
+      - 'apps/times-api'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      DATABASE_URL: ${{secrets.TEST_DATABASE_URL}}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - name: install dependencies
+        run: yarn
+
+      - name: Run tests
+        run: yarn test
+        env:
+          DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
