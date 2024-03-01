@@ -6,6 +6,8 @@ import { NativeBaseProvider } from 'native-base'
 
 import NavigationStack from './navigation/NavigationStack'
 
+// comando para SHA  expo credentials:manager -p android
+
 export default function App() {
   const config = { dependencies: { 'linear-gradient': LinearGradient } }
 
