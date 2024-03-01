@@ -2,13 +2,16 @@ import { betterTimesByUserQuery, createBetterTimeMutation } from '@graphqldefs'
 import { INestApplication } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 
-import { AppModule } from '../../src/app.module'
+import { AppModule } from '../../src/app/app.module'
+import { GqlAuthGuard } from '../../src/google/google.guard'
+import { GoogleService } from '../../src/google/google.service'
 import { PrismaService } from '../../src/prismamodule/prismamodule.service'
 import { RacewayModel } from '../../src/raceway/models/raceway.model'
 import { UserModel } from '../../src/users/models/user.model'
 import { cleanDatabase } from '../helpers/database.helper'
 import { graphqlRequest } from '../helpers/supertest.request.helper'
 import { racewaysData } from '../raceways/raceways.data'
+import { usersData } from '../users/users.data'
 
 
 describe('better times resolver', () => {
@@ -22,7 +25,10 @@ describe('better times resolver', () => {
   beforeAll(async () => {
     const moduleFixture = await Test.createTestingModule({
       imports: [AppModule],
-    }).compile()
+    })
+      .overrideProvider(GoogleService)
+      .useValue({ validateToken: jest.fn().mockResolvedValue(usersData[0]) })
+      .compile()
 
     prisma = moduleFixture.get<PrismaService>(PrismaService)
 

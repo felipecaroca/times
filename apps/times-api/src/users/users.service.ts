@@ -9,17 +9,10 @@ import { UserModel } from './models/user.model'
 export class UsersService {
   constructor(private readonly prismaService: PrismaService) { }
 
-  async create(data: CreateUserDTO): Promise<UserModel> {
-
-    return this.prismaService.user.create({
-      data,
-    })
-  }
-
-  async getById(id: string): Promise<UserModel> {
+  async getBySub(sub: string): Promise<UserModel> {
     return this.prismaService.user.findFirst({
       where: {
-        id,
+        sub,
       },
       include: {
         betterTimes: {
@@ -27,6 +20,22 @@ export class UsersService {
             raceway: true,
           },
         },
+      },
+    })
+  }
+
+  async updateUserData(input: CreateUserDTO): Promise<UserModel> {
+    const { email, name, sub, picture } = input
+
+    return this.prismaService.user.upsert({
+      where: {
+        email,
+      },
+      create: {
+        email, name, sub, picture,
+      },
+      update: {
+        email, name, sub, picture,
       },
     })
   }

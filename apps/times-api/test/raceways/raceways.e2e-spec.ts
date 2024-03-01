@@ -2,11 +2,13 @@ import { createRacewayMutation, racewayQuery, racewaysQuery } from '@graphqldefs
 import { INestApplication } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
 
-import { AppModule } from '../../src/app.module'
+import { AppModule } from '../../src/app/app.module'
+import { GoogleService } from '../../src/google/google.service'
 import { PrismaService } from '../../src/prismamodule/prismamodule.service'
 import { cleanDatabase } from '../helpers/database.helper'
 import { graphqlRequest } from '../helpers/supertest.request.helper'
 import { racewaysData } from '../raceways/raceways.data'
+import { usersData } from '../users/users.data'
 
 
 describe('raceways resolver', () => {
@@ -19,7 +21,10 @@ describe('raceways resolver', () => {
   beforeAll(async () => {
     const moduleFixture = await Test.createTestingModule({
       imports: [AppModule],
-    }).compile()
+    })
+      .overrideProvider(GoogleService)
+      .useValue({ validateToken: jest.fn().mockResolvedValue(usersData[0]) })
+      .compile()
 
     prisma = moduleFixture.get<PrismaService>(PrismaService)
 
