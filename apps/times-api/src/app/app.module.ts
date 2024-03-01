@@ -6,10 +6,12 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 
-import { BetterTimesModule } from './bettertimes/bettertimes.module'
-import { PrismaModule } from './prismamodule/prismamodule.module'
-import { RacewaysModule } from './raceway/raceway.module'
-import { UsersModule } from './users/users.module'
+import { BetterTimesModule } from '../bettertimes/bettertimes.module'
+import { GoogleModule } from '../google/google.module'
+import { PrismaModule } from '../prismamodule/prismamodule.module'
+import { RacewaysModule } from '../raceway/raceway.module'
+import { UsersModule } from '../users/users.module'
+
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 
@@ -19,6 +21,7 @@ import { AppService } from './app.service'
     PrismaModule,
     BetterTimesModule,
     RacewaysModule,
+    GoogleModule,
     ConfigModule.forRoot({
       envFilePath: '.env',
     }),

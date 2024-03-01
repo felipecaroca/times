@@ -1,20 +1,25 @@
+import { UseGuards } from '@nestjs/common'
 import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql'
+
+import { CurrentUser } from '../google/currentuser.decorator'
+import { GqlAuthGuard } from '../google/google.guard'
+import { UserModel } from '../users/models/user.model'
 
 import { CreateBetterTimeDTO } from './dto/createbettertime.dto'
 import { BetterTimeModel } from './models/bettertime.model'
 import { BetterTimesService } from './bettertimes.service'
 
 @Resolver(() => BetterTimeModel)
+@UseGuards(GqlAuthGuard)
 export class BetterTimesResolver {
   constructor(private readonly betterTimesService: BetterTimesService) { }
 
   @Mutation(() => BetterTimeModel)
   async createBetterTime(
+    @CurrentUser() user: UserModel,
     @Args('input', { type: () => CreateBetterTimeDTO }) input: CreateBetterTimeDTO,
   ): Promise<BetterTimeModel> {
-    const userId = '65ce90e0c9e52fa504eee187' // TODO: remover cuando se tenga cuenta de usuario
-
-    return this.betterTimesService.create(input, userId)
+    return this.betterTimesService.create(input, user.sub)
   }
 
   @Query(() => [BetterTimeModel])

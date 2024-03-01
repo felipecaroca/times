@@ -17,17 +17,6 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type UserModel {
-  id: ID!
-  createdAt: DateTime
-  updatedAt: DateTime
-  deletedAt: DateTime
-  email: String!
-  name: String
-  sub: String!
-  betterTimes: [BetterTimeModel]
-}
-
 type BetterTimeModel {
   id: ID!
   createdAt: DateTime
@@ -42,24 +31,29 @@ type BetterTimeModel {
   milliseconds: Int!
 }
 
+type UserModel {
+  id: ID!
+  createdAt: DateTime
+  updatedAt: DateTime
+  deletedAt: DateTime
+  email: String!
+  name: String
+  sub: String!
+  picture: String!
+  betterTimes: [BetterTimeModel]
+}
+
 type Query {
-  user(id: ID!): UserModel!
   betterTimesByUser(userId: ID!): [BetterTimeModel!]!
   raceways: [RacewayModel!]!
   raceway(id: ID!): RacewayModel!
 }
 
 type Mutation {
-  createUser(input: CreateUserDTO!): UserModel!
+  updateUser: UserModel!
   deleteUser(id: ID!): Boolean!
   createBetterTime(input: CreateBetterTimeDTO!): BetterTimeModel!
   createRaceway(input: CreateRacewayDTO!): RacewayModel!
-}
-
-input CreateUserDTO {
-  email: String!
-  name: String
-  sub: String!
 }
 
 input CreateBetterTimeDTO {

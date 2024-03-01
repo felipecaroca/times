@@ -10,6 +10,8 @@
     "dev": "turbo dev",
     "api": "turbo api",
     "a": "cd apps/times-app && yarn android",
+    "a:build": "cd apps/times-app && yarn android:build",
+    "a:submit": "cd apps/times-app && yarn android:submit",
     "test": "cd apps/times-api && yarn test:e2e"
   },
   "workspaces": [

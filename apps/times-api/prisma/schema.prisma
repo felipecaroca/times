@@ -22,11 +22,12 @@ model Raceway {
 
 model User {
   id           String         @id() @default(auto()) @map("_id") @db.ObjectId
-  email        String
+  email        String         @unique()
   name         String?
   sub          String
-  createdAt    DateTime?    @default(now())
-  updatedAt    DateTime?   @updatedAt
+  picture      String
+  createdAt    DateTime?      @default(now())
+  updatedAt    DateTime?      @updatedAt
   deletedAt    DateTime?
   betterTimes  BetterTime[]
 }

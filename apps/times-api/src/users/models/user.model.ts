@@ -15,6 +15,9 @@ export class UserModel extends BaseModel {
   @Field()
   sub: string
 
+  @Field()
+  picture: string
+
   @Field(() => [BetterTimeModel], { nullable: 'itemsAndList' })
   betterTimes?: BetterTimeModel[]
 }

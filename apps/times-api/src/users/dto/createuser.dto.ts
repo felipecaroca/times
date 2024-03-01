@@ -10,5 +10,8 @@ export class CreateUserDTO {
   name?: string
 
   @Field()
+  picture: string
+
+  @Field()
   sub: string
 }
