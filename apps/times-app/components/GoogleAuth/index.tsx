@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react'
-import { TokenResponse } from 'expo-auth-session'
+import { FC, useEffect } from 'react'
 import * as Google from 'expo-auth-session/providers/google'
 import * as WebBrowser from 'expo-web-browser'
 import { Box, Button } from 'native-base'
 
+import { saveToken } from '../../lib'
+
+import { GoogleAuthComponentProps } from './types'
+
 WebBrowser.maybeCompleteAuthSession()
 
-const GoogleAuthComponent = () => {
-  const [, setStoredToken] = useState<TokenResponse | null>()
-
+const GoogleAuthComponent: FC<GoogleAuthComponentProps> = ({ onSuccess }) => {
   const [, response, promptAsync] = Google.useIdTokenAuthRequest({
     clientId: process.env.EXPO_PUBLIC_WEB_CLIENT_ID,
     iosClientId: process.env.EXPO_PUBLIC_IOS_CLIENT_ID,
@@ -19,8 +20,12 @@ const GoogleAuthComponent = () => {
     if (response?.type === 'success') {
       const { authentication } = response
 
-      console.log(authentication)
-      setStoredToken(authentication)
+      saveToken({
+        accessToken: authentication?.idToken || '',
+        refreshToken: authentication?.refreshToken || '',
+      })
+        .then(onSuccess)
+        .catch(err => console.log('ERROR', err))
     }
   }, [response])
 

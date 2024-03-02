@@ -22,8 +22,8 @@ const PressableButton: WithChildren<PressableButtonProps> = ({
           bg={{
             linearGradient: {
               colors: [
-                colors.grayButton.dark,
-                `${isPressed ? colors.grayButton.pressed : colors.grayButton.light}`,
+                colors.street.dark,
+                `${isPressed ? colors.street.dark : colors.street.light}`,
               ],
               start: [0, 0],
               end: [0, 1],

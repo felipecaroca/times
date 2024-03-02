@@ -43,7 +43,13 @@ type UserModel {
   betterTimes: [BetterTimeModel]
 }
 
+type RefreshTokenModel {
+  accessToken: String!
+  refreshToken: String!
+}
+
 type Query {
+  me: UserModel!
   betterTimesByUser(userId: ID!): [BetterTimeModel!]!
   raceways: [RacewayModel!]!
   raceway(id: ID!): RacewayModel!
@@ -54,6 +60,7 @@ type Mutation {
   deleteUser(id: ID!): Boolean!
   createBetterTime(input: CreateBetterTimeDTO!): BetterTimeModel!
   createRaceway(input: CreateRacewayDTO!): RacewayModel!
+  refreshToken(refreshToken: String!): RefreshTokenModel!
 }
 
 input CreateBetterTimeDTO {

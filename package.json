@@ -12,6 +12,7 @@
     "a": "cd apps/times-app && yarn android",
     "a:dev-client": "cd apps/times-app && yarn dev:client",
     "a:build": "cd apps/times-app && yarn android:build",
+    "a:build-dev": "cd apps/times-app && yarn android:build-dev",
     "a:submit": "cd apps/times-app && yarn android:submit",
     "test": "cd apps/times-api && yarn test:e2e"
   },

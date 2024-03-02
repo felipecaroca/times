@@ -5,7 +5,6 @@ import Loading from '../../components/Loading'
 import PressableButton from '../../components/PressableButton'
 import { WithNavigation } from '../../generic/types/CustomFC'
 import { useRaceways } from '../../hooks'
-import LoginScreen from '../Login'
 
 const RacewaysScreen: WithNavigation = ({ navigation }) => {
   const { raceways, loadingRaceways } = useRaceways()
@@ -19,7 +18,6 @@ const RacewaysScreen: WithNavigation = ({ navigation }) => {
   return (
     <Loading isLoading={loadingRaceways}>
       <Box safeArea>
-        <LoginScreen />
         <ScrollView>
           {raceways.map(raceway => (
             <PressableButton

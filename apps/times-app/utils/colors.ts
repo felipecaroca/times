@@ -1,15 +1,21 @@
 export const colors = {
   primary: {
-
+    light: '#00d2fd',
+    dark: '#0a79ba',
   },
   secondary: {
-
+    light: '#c0328c',
+    dark: '#8e3284',
+  },
+  tertiary: {
+    light: '#f5b02e',
+    dark: '#ee8625',
   },
   white: '#fff',
-  grayButton: {
-    dark: 'gray.700',
-    light: 'gray.400',
-    pressed: 'gray.800',
+  black: '#000',
+  street: {
+    dark: '#454547',
+    light: '#6e707e',
   },
   flatList: {
     border: 'blue.200',
@@ -19,15 +25,15 @@ export const colors = {
     end: 'white',
   },
   success: {
-    bg: '',
-    text: '',
+    bg: '#c4c74c',
+    text: '#689459',
   },
   error: {
-    bg: '',
-    text: '',
+    bg: '##d7642a',
+    text: '#bf2a31',
   },
   info: {
-    bg: '',
-    text: '',
+    bg: '#aaecf6',
+    text: '#155997',
   },
 }

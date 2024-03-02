@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { RouteProp, useRoute } from '@react-navigation/native'
 import { Box, FlatList, Text } from 'native-base'
 
@@ -10,14 +11,16 @@ const BetterTimesScreen: WithNavigation = ({ navigation }) => {
   const route = useRoute<RouteProp<{ raceway: RacewayModel }, 'raceway'>>()
   const { modelTimeToString } = useTime()
 
-  navigation.setOptions({
-    title: 'Mejores tiempos',
-  })
+  useEffect(() => {
+    navigation.setOptions({
+      title: 'Mejores tiempos',
+    })
+  }, [])
 
   return (
     <Box safeArea>
       <FlatList
-        data={route.params.betterTimes}
+        data={route.params.betterTimes || []}
         renderItem={({ item, index }) => (
           <Box
             borderBottomWidth={2}

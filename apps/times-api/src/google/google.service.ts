@@ -1,11 +1,29 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { OAuth2Client } from 'google-auth-library'
 
+import { VALIDATE_TOKEN_ERRORS } from '../consts'
 import { UserModel } from '../users/models/user.model'
+
+import { RefreshTokenModel } from './models/refreshtoken.model'
+
+
 
 @Injectable()
 export class GoogleService {
   private oauthClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
+
+  async refreshToken(refreshToken: string): Promise<RefreshTokenModel> {
+    await this.oauthClient.setCredentials({
+      refresh_token: refreshToken,
+    })
+
+    const res = await this.oauthClient.getAccessToken()
+
+    return {
+      accessToken: res.res?.data?.id_token,
+      refreshToken: res.res?.data?.refresh_token,
+    }
+  }
 
   async validateToken(token: string): Promise<UserModel> {
     try {
@@ -24,13 +42,15 @@ export class GoogleService {
         picture: payload.picture,
       }
     } catch (error) {
-      let errorCode = 'ERROR_UNKNOWN'
+      console.log(error)
 
-      if (error.toString().includes('Token used too late'))
-        errorCode = 'TOKEN_EXPIRED'
+      const errorCode = 'ERROR_UNKNOWN'
+      const errorString = error.toString()
 
-      if (error.toString().includes('Invalid token signature'))
-        errorCode = 'UNAUTHORIZED'
+      VALIDATE_TOKEN_ERRORS.forEach(errorHandler => {
+        if (errorString.includes(errorHandler.error))
+          throw new UnauthorizedException(errorHandler.code)
+      })
 
       throw new UnauthorizedException(errorCode)
     }

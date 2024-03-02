@@ -1,6 +1,6 @@
 
 import { UseGuards } from '@nestjs/common'
-import { Args, ID, Mutation, Resolver } from '@nestjs/graphql'
+import { Args, ID, Mutation, Query, Resolver } from '@nestjs/graphql'
 
 import { CurrentUser } from '../google/currentuser.decorator'
 import { GqlAuthGuard } from '../google/google.guard'
@@ -29,5 +29,12 @@ export class UsersResolver {
     @Args('id', { type: () => ID }) id: string,
   ): Promise<boolean> {
     return this.usersService.deleteById(id)
+  }
+
+  @Query(() => UserModel)
+  async me(
+    @CurrentUser() user: UserModel,
+  ): Promise<UserModel> {
+    return user
   }
 }

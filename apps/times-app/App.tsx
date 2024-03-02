@@ -1,10 +1,10 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { LinearGradient } from 'expo-linear-gradient'
-import { StatusBar } from 'expo-status-bar'
 import { NativeBaseProvider } from 'native-base'
 
-import NavigationStack from './navigation/NavigationStack'
+import { navigationRef } from './lib/navigation.lib'
+import DrawerNavigation from './navigation/DrawerNavigation'
 
 // comando para SHA  expo credentials:manager -p android
 
@@ -13,9 +13,8 @@ export default function App() {
 
   return (
     <NativeBaseProvider config={config}>
-      <NavigationContainer>
-        <NavigationStack />
-        <StatusBar style="auto" />
+      <NavigationContainer ref={navigationRef}>
+        <DrawerNavigation />
       </NavigationContainer>
     </NativeBaseProvider>
   )
