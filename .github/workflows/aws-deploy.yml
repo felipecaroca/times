@@ -51,4 +51,4 @@ jobs:
         environment_name: "Kartime-api-env"
         version_label: "deploy-${{ github.sha }}"
         region: ${{secrets.AWS_REGION}}
-        deployment_package: "Dockerrun.aws.json"
+        deployment_package: "apps/times-api/Dockerrun.aws.json"
