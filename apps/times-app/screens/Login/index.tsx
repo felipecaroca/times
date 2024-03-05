@@ -1,17 +1,11 @@
-import GoogleAuthComponent from '../../components/GoogleAuth'
-import { WithNavigation } from '../../generic/types/CustomFC'
+import { FC } from 'react'
 
-const LoginScreen: WithNavigation = ({ navigation }) => {
-  return (
-    <GoogleAuthComponent
-      onSuccess={() =>
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'raceways' }],
-        })
-      }
-    />
-  )
+import GoogleAuthComponent from '../../components/GoogleAuth'
+
+import { LoginScreenProps } from './types'
+
+const LoginScreen: FC<LoginScreenProps> = ({ onSuccess }) => {
+  return <GoogleAuthComponent onSuccess={onSuccess} />
 }
 
 export default LoginScreen

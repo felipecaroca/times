@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DATABASE_URL: ${{secrets.TEST_DATABASE_URL}}
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
 
     steps:
       - name: Checkout code
@@ -30,4 +30,4 @@ jobs:
       - name: Run tests
         run: yarn test
         env:
-          DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}

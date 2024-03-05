@@ -19,7 +19,7 @@ export const useSession = () => {
       try {
         const response = await getUser()
 
-        return response.data.me || response.error?.message
+        return response.data?.me || response.error?.message
       } catch (r) {
         console.log(r)
       }
@@ -60,5 +60,6 @@ export const useSession = () => {
     userData,
     isLoading: loading || refreshing,
     logout,
+    handleUser,
   }
 }

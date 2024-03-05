@@ -9,6 +9,8 @@
   "scripts": {
     "dev": "turbo dev",
     "api": "turbo api",
+    "start": "cd apps/times-api && yarn start:prod",
+    "api:build": "cd apps/times-api && yarn build",
     "a": "cd apps/times-app && yarn android",
     "a:dev-client": "cd apps/times-app && yarn dev:client",
     "a:build": "cd apps/times-app && yarn android:build",

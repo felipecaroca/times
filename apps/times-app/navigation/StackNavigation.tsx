@@ -1,7 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
 
 import BetterTimesScreen from '../screens/BetterTimes'
-import LoginScreen from '../screens/Login'
 import RacewayScreen from '../screens/Raceway'
 import RacewaysScreen from '../screens/Raceways'
 import { colors } from '../utils'
@@ -18,10 +17,13 @@ const StackNavigation = () => {
         },
         headerTintColor: '#fff',
       }}>
-      <Stack.Screen name="raceways" component={RacewaysScreen} />
+      <Stack.Screen
+        name="raceways"
+        component={RacewaysScreen}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen name="raceway" component={RacewayScreen} />
       <Stack.Screen name="betterTimes" component={BetterTimesScreen} />
-      <Stack.Screen name="login" component={LoginScreen} />
     </Stack.Navigator>
   )
 }

@@ -1,9 +1,10 @@
 import { FC, useEffect } from 'react'
 import * as Google from 'expo-auth-session/providers/google'
 import * as WebBrowser from 'expo-web-browser'
-import { Box, Button } from 'native-base'
+import { Button, Flex, Image, Text } from 'native-base'
 
 import { saveToken } from '../../lib'
+import { colors } from '../../utils'
 
 import { GoogleAuthComponentProps } from './types'
 
@@ -30,9 +31,19 @@ const GoogleAuthComponent: FC<GoogleAuthComponentProps> = ({ onSuccess }) => {
   }, [response])
 
   return (
-    <Box>
-      <Button onPress={() => promptAsync()}>Iniciar sesión con Google</Button>
-    </Box>
+    <Flex h="full" justifyContent="center" p="5" bg={colors.white}>
+      <Flex direction="row" alignItems="center" justifyContent="center">
+        <Image
+          source={require('../../assets/google-logo.png')}
+          alt="google-logo"
+          size={50}
+        />
+        <Text fontSize={30}>Bienvenido</Text>
+      </Flex>
+      <Button variant="ghost" onPress={() => promptAsync()}>
+        Iniciar sesión con Google
+      </Button>
+    </Flex>
   )
 }
 

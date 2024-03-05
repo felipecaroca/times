@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Box, ScrollView } from 'native-base'
 
 import Loading from '../../components/Loading'
@@ -8,12 +7,6 @@ import { useRaceways } from '../../hooks'
 
 const RacewaysScreen: WithNavigation = ({ navigation }) => {
   const { raceways, loadingRaceways } = useRaceways()
-
-  useEffect(() => {
-    navigation.setOptions({
-      title: 'Pistas',
-    })
-  }, [])
 
   return (
     <Loading isLoading={loadingRaceways}>

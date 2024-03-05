@@ -1,0 +1,10 @@
+runtime: nodejs18
+
+env_variables:
+  NODE_ENV: production
+  DATABASE_URL: $DATABASE_URL
+  GOOGLE_CLIENT_ID: $GOOGLE_CLIENT_ID
+
+handlers:
+  - url: /.*
+    script: auto
