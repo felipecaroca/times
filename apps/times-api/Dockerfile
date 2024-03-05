@@ -41,6 +41,5 @@ FROM node:hydrogen-alpine3.19 AS production
 
 COPY --chown=node:node --from=build /app/node_modules ./node_modules
 COPY --chown=node:node --from=build /app/dist ./dist
-COPY --chown=node:node --from=build /app/.env .env
 
 CMD [ "node", "dist/main.js" ]
