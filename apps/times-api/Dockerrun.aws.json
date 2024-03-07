@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "058264468241.dkr.ecr.turegion.amazonaws.com/kartime-api-image:latest",
+    "Name": "058264468241.dkr.ecr.sa-east-1.amazonaws.com/kartime-api-image:latest",
     "Update": "true"
   },
   "Ports": [
