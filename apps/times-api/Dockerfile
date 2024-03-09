@@ -30,6 +30,9 @@ ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
 ARG PORT
 ENV PORT=$PORT
 
+ARG NODE_ENV
+ENV NODE_ENV=$NODE_ENV
+
 WORKDIR /app
 
 COPY --chown=node:node --from=build /app/dist ./dist
