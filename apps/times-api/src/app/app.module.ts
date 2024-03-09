@@ -29,7 +29,7 @@ import { AppService } from './app.service'
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       playground: false,
-      plugins: [ApolloServerPluginLandingPageLocalDefault()],
+      plugins: process.env.NODE_ENV !== 'production' ? [ApolloServerPluginLandingPageLocalDefault()] : [],
     }),
   ],
   controllers: [AppController],
