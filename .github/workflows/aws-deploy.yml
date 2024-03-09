@@ -23,10 +23,11 @@ jobs:
     - name: Build Docker image
       run: |
         cd apps/times-api
-        docker build -t kartime-api-image . \
-        --build-arg DATABASE_URL=${{secrets.DATABASE_URL}} \
+        docker build --build-arg DATABASE_URL=${{secrets.DATABASE_URL}} \
         --build-arg GOOGLE_CLIENT_ID=${{secrets.GOOGLE_CLIENT_ID}} \
-        --build-arg PORT=3000
+        --build-arg PORT=3000 \
+        -t kartime-api-image . \
+       
 
 
     - name: Login to AWS ECR (Elastic Container Registry)

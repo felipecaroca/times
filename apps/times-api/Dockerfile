@@ -1,22 +1,4 @@
-# BUILD FOR LOCAL DEVELOPMENT
-
-FROM node:hydrogen-alpine3.19 AS development
-
-WORKDIR /app
-
-RUN npm install -g @nestjs/cli
-
-COPY --chown=node:node package.json .
-
-COPY --chown=node:node yarn.lock .
-
-RUN yarn
-
-COPY --chown=node:node . .
-
-USER node
-
-# BUILD FOR PRODUCTION
+# BUILD
 
 FROM node:hydrogen-alpine3.19 AS build
 
@@ -25,21 +7,37 @@ WORKDIR /app
 RUN npm install -g @nestjs/cli
 
 COPY --chown=node:node package.json .
-COPY --chown=node:node . .
+COPY --chown=node:node yarn.lock .
 
-RUN yarn --prod
+RUN yarn
+
+COPY --chown=node:node . .
 
 RUN yarn build
 
-ENV NODE_ENV production
-
 USER node
 
-# PRODUCTION
+#PRODUCTION
 
 FROM node:hydrogen-alpine3.19 AS production
 
-COPY --chown=node:node --from=build /app/node_modules ./node_modules
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
+
+ARG GOOGLE_CLIENT_ID
+ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
+
+ARG PORT
+ENV PORT=$PORT
+
+WORKDIR /app
+
 COPY --chown=node:node --from=build /app/dist ./dist
+COPY --chown=node:node --from=build /app/prisma ./prisma
+COPY --chown=node:node package.json .
+COPY --chown=node:node yarn.lock .
+
+RUN yarn install --prod && yarn cache clean
+RUN yarn prisma:generate
 
 CMD [ "node", "dist/main.js" ]
