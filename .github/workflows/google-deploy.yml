@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          path: 'times-api'
 
       - uses: 73h/gae-app-yaml-replace-env-variables@v0.3
         env:
@@ -21,15 +23,15 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
         with:
-          app_yaml_path: "apps/times-api/app.yaml"
+          app_yaml_path: "app.yaml"
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 18
 
-      - name: Move files to kartime-api directory
-        run: mv apps/times-api kartime-api
+      - name: install dependencies
+        run: yarn
 
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v2.1.2
@@ -37,4 +39,4 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
       - name: Deploy to GCP App Engine
-        run: cd kartime-api && gcloud app deploy --project kartime-415323 
+        run:  gcloud app deploy --project kartime-415323 
