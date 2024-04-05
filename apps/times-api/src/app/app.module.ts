@@ -15,6 +15,8 @@ import { UsersModule } from '../users/users.module'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 
+const isLocalEnvironment = () => !process.env.GAE_ENV
+
 @Module({
   imports: [
     UsersModule,
@@ -27,7 +29,9 @@ import { AppService } from './app.service'
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      autoSchemaFile: isLocalEnvironment()
+        ? join(process.cwd(), 'src/schema.gql')
+        : '/tmp/schema.gql',
       playground: false,
       plugins: process.env.NODE_ENV !== 'production' ? [ApolloServerPluginLandingPageLocalDefault()] : [],
     }),
