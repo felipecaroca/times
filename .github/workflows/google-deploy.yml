@@ -23,7 +23,7 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
         with:
-          app_yaml_path: "app.yaml"
+          app_yaml_path: "times-api/app.yaml"
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -31,7 +31,7 @@ jobs:
           node-version: 18
 
       - name: install dependencies
-        run: yarn
+        run: cd times-api && yarn
 
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v2.1.2
@@ -39,4 +39,4 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
       - name: Deploy to GCP App Engine
-        run:  gcloud app deploy --project kartime-415323 
+        run:  cd times-api && gcloud app deploy --project kartime-415323 
