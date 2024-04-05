@@ -15,7 +15,7 @@ const StackNavigation = () => {
         headerStyle: {
           backgroundColor: colors.secondary.light,
         },
-        headerTintColor: '#fff',
+        headerTintColor: colors.white,
       }}>
       <Stack.Screen
         name="raceways"
@@ -23,7 +23,11 @@ const StackNavigation = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="raceway" component={RacewayScreen} />
-      <Stack.Screen name="betterTimes" component={BetterTimesScreen} />
+      <Stack.Screen
+        name="betterTimes"
+        component={BetterTimesScreen}
+        options={{ title: 'Mejores tiempos' }}
+      />
     </Stack.Navigator>
   )
 }

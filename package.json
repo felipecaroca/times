@@ -7,16 +7,17 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "app:add": "cd apps/times-app && npx expo add",
     "dev": "turbo dev",
     "api": "turbo api",
     "start": "cd apps/times-api && yarn start:prod",
     "api:build": "cd apps/times-api && yarn build",
-    "a": "cd apps/times-app && yarn android",
-    "a:dev-client": "cd apps/times-app && yarn dev:client",
-    "a:build": "cd apps/times-app && yarn android:build",
-    "a:build-dev": "cd apps/times-app && yarn android:build-dev",
-    "a:submit": "cd apps/times-app && yarn android:submit",
-    "test": "cd apps/times-api && yarn test:e2e"
+    "app": "cd apps/times-app && yarn dev:client",
+    "app:build": "cd apps/times-app && yarn android:build",
+    "app:build-dev": "cd apps/times-app && yarn android:build-dev",
+    "app:submit": "cd apps/times-app && yarn android:submit",
+    "test": "cd apps/times-api && yarn test:e2e",
+    "aiapi": "cd apps/ai-api && flask run"
   },
   "workspaces": [
     "apps/*"

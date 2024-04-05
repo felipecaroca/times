@@ -41,5 +41,4 @@ yarn-error.*
 
 # @end expo-cli
 
-
-.github/workflows/google-deploy.yml
+.github/workflows/aws-deploy.yml

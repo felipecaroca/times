@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { RouteProp, useRoute } from '@react-navigation/native'
 import { Box, FlatList, Text } from 'native-base'
 
@@ -7,15 +6,9 @@ import { WithNavigation } from '../../generic/types/CustomFC'
 import { useTime } from '../../hooks'
 import { colors } from '../../utils'
 
-const BetterTimesScreen: WithNavigation = ({ navigation }) => {
+const BetterTimesScreen: WithNavigation = () => {
   const route = useRoute<RouteProp<{ raceway: RacewayModel }, 'raceway'>>()
   const { modelTimeToString } = useTime()
-
-  useEffect(() => {
-    navigation.setOptions({
-      title: 'Mejores tiempos',
-    })
-  }, [])
 
   return (
     <Box safeArea>

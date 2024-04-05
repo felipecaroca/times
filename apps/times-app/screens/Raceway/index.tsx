@@ -3,6 +3,7 @@ import { RouteProp, useRoute } from '@react-navigation/native'
 import { Box, useDisclose } from 'native-base'
 
 import { RacewayModel } from '../../../times-api/src/raceway/models/raceway.model'
+import CameraComponent from '../../components/Camera'
 import Loading from '../../components/Loading'
 import CustomModal from '../../components/modal'
 import PressableButton from '../../components/PressableButton'
@@ -55,7 +56,7 @@ const RacewayScreen: WithNavigation = ({ navigation }) => {
           </PressableButton>
           <CustomModal
             {...{ isOpen, onClose, title: 'Agrega tu nuevo tiempo.' }}>
-            <TimePicker onSubmit={saveTime} isLoading={isCreatingBetterTime} />
+            <CameraComponent />
           </CustomModal>
         </Box>
       )}

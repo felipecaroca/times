@@ -16,6 +16,8 @@ import { getToken } from './lib'
 const errorLink = onError(({ graphQLErrors }) => {
   if (graphQLErrors)
     graphQLErrors.forEach(({ message }) => {
+      console.log(message)
+
       if (message === 'UNAUTHORIZED') navigateTo('login')
     })
 })
@@ -24,6 +26,8 @@ const authLink = setContext(async (_, { headers }) => {
   try {
     const credentials = await getToken()
     const token = credentials?.accessToken
+
+    console.log('token', token)
 
     return {
       headers: {
