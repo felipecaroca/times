@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - uses: 73h/gae-app-yaml-replace-env-variables@v0.3
         env:
@@ -27,6 +27,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 18
+
+      - name: Remove monorepo package
+        run: rm package.json yarn.lock
 
       - name: install dependencies
         run: cd apps/times-api && yarn
