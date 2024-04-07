@@ -32,7 +32,7 @@ jobs:
         run: rm package.json yarn.lock
 
       - name: install dependencies
-        run: cd apps/times-api && yarn
+        run: cd apps/times-api && yarn --production
 
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v2.1.2
