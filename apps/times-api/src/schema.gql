@@ -43,6 +43,13 @@ type UserModel {
   betterTimes: [BetterTimeModel]
 }
 
+type TimeFromImageModel {
+  userAlias: String!
+  minutes: Int!
+  seconds: Int!
+  milliseconds: Int!
+}
+
 type RefreshTokenModel {
   accessToken: String!
   refreshToken: String!
@@ -56,11 +63,18 @@ type Query {
 }
 
 type Mutation {
+  timeFromImage(input: TimeFromImageDTO!): TimeFromImageModel!
   updateUser: UserModel!
   deleteUser(id: ID!): Boolean!
   createBetterTime(input: CreateBetterTimeDTO!): BetterTimeModel!
   createRaceway(input: CreateRacewayDTO!): RacewayModel!
   refreshToken(refreshToken: String!): RefreshTokenModel!
+}
+
+input TimeFromImageDTO {
+  userAlias: String!
+  b64: String!
+  mediaType: String!
 }
 
 input CreateBetterTimeDTO {

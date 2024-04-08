@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - apps/times-api
+    paths:
+      - apps/times-api
 
 jobs:
   deploy:

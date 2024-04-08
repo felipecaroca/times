@@ -25,6 +25,7 @@
   "dependencies": {
     "@apollo/server": "^4.10.0",
     "@nestjs/apollo": "^12.1.0",
+    "@nestjs/axios": "^3.0.2",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^3.1.1",
     "@nestjs/core": "^9.0.0",
@@ -32,6 +33,7 @@
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-express": "^9.0.0",
     "@prisma/client": "^5.9.1",
+    "axios": "^1.6.8",
     "google-auth-library": "^9.6.3",
     "graphql": "^16.8.1",
     "microsoft-cognitiveservices-speech-sdk": "^1.35.0",
