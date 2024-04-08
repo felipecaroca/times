@@ -6,6 +6,6 @@ export const useTime = () => {
 
   return {
     modelTimeToString: (betterTime: BetterTimeModel) =>
-      `${numberToText(betterTime.minutes)}:${numberToText(betterTime.seconds)}:${numberToText(betterTime.milliseconds, 3)} `,
+      `${numberToText(betterTime.minutes)}:${numberToText(betterTime.seconds)}.${numberToText(betterTime.milliseconds, 3)} `,
   }
 }

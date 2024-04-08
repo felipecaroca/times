@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - apps/times-api
+    paths:
+      - apps/times-api
 
 jobs:
   deploy:
@@ -20,6 +20,9 @@ jobs:
           NODE_ENV: production
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          IA_URL: ${{ secrets.IA_URL }}
+          IA_BASIC_USER_NAME: ${{ secrets.IA_BASIC_USER_NAME }}
+          IA_BASIC_USER_PASS: ${{ secrets.IA_BASIC_USER_PASS }}
         with:
           app_yaml_path: "apps/times-api/app.yaml"
 

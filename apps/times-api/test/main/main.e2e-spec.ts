@@ -7,7 +7,7 @@ jest.mock('@nestjs/core', () => ({
   __esModule: true,
   default: jest.fn(),
   NestFactory: {
-    create: jest.fn().mockResolvedValue({ listen: jest.fn(), getUrl: jest.fn() }),
+    create: jest.fn().mockResolvedValue({ listen: jest.fn(), getUrl: jest.fn(), use: jest.fn() }),
   },
 }))
 

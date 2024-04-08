@@ -13,10 +13,12 @@ import { navigateTo } from './lib/navigation.lib'
 import App from './App'
 import { getToken } from './lib'
 
-const errorLink = onError(({ graphQLErrors }) => {
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  console.debug('EEERR', graphQLErrors, networkError)
+
   if (graphQLErrors)
     graphQLErrors.forEach(({ message }) => {
-      console.log(message)
+      console.debug('ERROR_MESAGE', message)
 
       if (message === 'UNAUTHORIZED') navigateTo('login')
     })
@@ -27,7 +29,7 @@ const authLink = setContext(async (_, { headers }) => {
     const credentials = await getToken()
     const token = credentials?.accessToken
 
-    console.log('token', token)
+    // console.log('token', token)
 
     return {
       headers: {

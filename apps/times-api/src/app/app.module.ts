@@ -8,6 +8,7 @@ import { GraphQLModule } from '@nestjs/graphql'
 
 import { BetterTimesModule } from '../bettertimes/bettertimes.module'
 import { GoogleModule } from '../google/google.module'
+import { IAModule } from '../ia/ia.module'
 import { PrismaModule } from '../prismamodule/prismamodule.module'
 import { RacewaysModule } from '../raceway/raceway.module'
 import { UsersModule } from '../users/users.module'
@@ -19,6 +20,7 @@ const isLocalEnvironment = () => !process.env.GAE_ENV
 
 @Module({
   imports: [
+    IAModule,
     UsersModule,
     PrismaModule,
     BetterTimesModule,

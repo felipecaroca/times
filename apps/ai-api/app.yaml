@@ -1,0 +1,13 @@
+runtime: python311
+
+service: ai-api
+
+env_variables:
+  FLASK_ENV: $FLASK_ENV
+  ANTHROPIC_API_KEY: $ANTHROPIC_API_KEY
+  BASIC_USER_NAME: $BASIC_USER_NAME
+  BASIC_USER_PASS: $BASIC_USER_PASS
+
+handlers:
+  - url: /.*
+    script: main.app
