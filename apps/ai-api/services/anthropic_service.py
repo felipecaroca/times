@@ -9,6 +9,8 @@ class Anthropic_Service:
     message = self.client.messages.create(
       model="claude-3-opus-20240229",
       max_tokens=1024,
+      temperature=0,
+      system="responde solo en formato json, evita cualquier texto fuera del json con el siguiente formato: {found: boolean, user_alias: string, minutes: number, seconds: number, milliseconds: number}",
       messages=[
         {
           "role": "user",
@@ -23,7 +25,7 @@ class Anthropic_Service:
             },
             {
               "type": "text",
-              "text": f"Analiza con atención la imagen, los mejores tiempos estan marcados, los formatos de tiempo pueden estar en minutos:segundos.milisegundos o solo segundos.milisegundos, responde solo en json el mejor tiempo de {user_alias}"+" responde en el siguiente formato: {user_alias: string, minutes: number, second: number, millisecond: number}"
+              "text": f"Analiza con atención tiempos, los formatos de tiempo pueden estar en minutos:segundos.milisegundos o solo segundos.milisegundos, los mejores tiempos estan marcados, responde el mejor tiempo de {user_alias}"
             }
           ],
         }

@@ -14,10 +14,17 @@ export class IAService {
 
     const { b64, mediaType, userAlias } = input
 
+    const apiKey = `${process.env.IA_BASIC_USER_NAME}:${process.env.IA_BASIC_USER_PASS}`
+
     const res = await firstValueFrom(this.httpService.post<TimeFromImageResponse>(`${process.env.IA_URL || ''}/claude3`, {
       b64,
       media_type: mediaType,
       user_alias: userAlias,
+    }, {
+      headers: {
+        Authorization: `basic ${Buffer.from(apiKey).toString('base64')}`,
+        'Content-Type': 'application/json',
+      },
     }))
 
     const { milliseconds, seconds, minutes, user_alias } = res.data

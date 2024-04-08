@@ -1,0 +1,41 @@
+name: Deploy to GCP App Engine
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - apps/ai-api
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: 73h/gae-app-yaml-replace-env-variables@v0.3
+        env:
+          FLASK_ENV: production
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BASIC_USER_NAME: ${{ secrets.IA_BASIC_USER_NAME }}
+          BASIC_USER_PASS: ${{ secrets.IA_BASIC_USER_PASS }}
+        with:
+          app_yaml_path: "apps/ai-api/app.yaml"
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: install dependencies
+        run: cd apps/ai-api && pip install -r requirements.txt
+
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v2.1.2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Deploy to GCP App Engine
+        run: cd apps/ai-api && gcloud app deploy --project kartime-415323 
