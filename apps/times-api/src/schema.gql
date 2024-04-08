@@ -43,16 +43,16 @@ type UserModel {
   betterTimes: [BetterTimeModel]
 }
 
+type RefreshTokenModel {
+  accessToken: String!
+  refreshToken: String!
+}
+
 type TimeFromImageModel {
   userAlias: String!
   minutes: Int!
   seconds: Int!
   milliseconds: Int!
-}
-
-type RefreshTokenModel {
-  accessToken: String!
-  refreshToken: String!
 }
 
 type Query {

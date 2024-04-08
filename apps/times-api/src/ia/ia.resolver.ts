@@ -1,9 +1,9 @@
 import { UseGuards } from '@nestjs/common'
 import { Args, Mutation, Resolver } from '@nestjs/graphql'
 
-import { CurrentUser } from 'src/google/currentuser.decorator'
-import { GqlAuthGuard } from 'src/google/google.guard'
-import { UserModel } from 'src/users/models/user.model'
+import { CurrentUser } from '../google/currentuser.decorator'
+import { GqlAuthGuard } from '../google/google.guard'
+import { UserModel } from '../users/models/user.model'
 
 import { TimeFromImageDTO } from './dto/time-from-image.dto'
 import { TimeFromImageModel } from './models/timefromimage.model'

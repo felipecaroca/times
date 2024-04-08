@@ -6,10 +6,9 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 
-import { IAModule } from 'src/ia/ia.module'
-
 import { BetterTimesModule } from '../bettertimes/bettertimes.module'
 import { GoogleModule } from '../google/google.module'
+import { IAModule } from '../ia/ia.module'
 import { PrismaModule } from '../prismamodule/prismamodule.module'
 import { RacewaysModule } from '../raceway/raceway.module'
 import { UsersModule } from '../users/users.module'
