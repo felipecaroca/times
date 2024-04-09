@@ -7,17 +7,19 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "app:add": "cd apps/times-app && npx expo add",
     "dev": "turbo dev",
     "api": "turbo api",
     "start": "cd apps/times-api && yarn start:prod",
     "api:build": "cd apps/times-api && yarn build",
+    "api:add": "cd apps/times-api && yarn add",
+    "test": "cd apps/times-api && yarn test:e2e",
+    "app:add": "cd apps/times-app && npx expo add",
     "app": "cd apps/times-app && yarn dev:client",
     "app:build": "cd apps/times-app && yarn android:build",
     "app:build-dev": "cd apps/times-app && yarn android:build-dev",
     "app:submit": "cd apps/times-app && yarn android:submit",
-    "test": "cd apps/times-api && yarn test:e2e",
-    "aiapi": "cd apps/ai-api && flask run"
+    "preaiapi": "docker build --target development -t ai-api:development apps/ai-api/",
+    "aiapi": "docker run -p 5000:5000 -v $(pwd)/apps/ai-api:/app ai-api:development"
   },
   "workspaces": [
     "apps/*"
