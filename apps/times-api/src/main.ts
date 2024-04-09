@@ -11,7 +11,7 @@ export async function bootstrap() {
 
   await app.listen(process.env.PORT)
 
-  console.debug(`listen on url  ${await app.getUrl()}`)
+  console.debug(`listen on url:  ${await app.getUrl()}`)
 }
 
 bootstrap()
