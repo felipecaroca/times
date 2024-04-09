@@ -18,7 +18,7 @@ basic_auth = BasicAuth(app)
 
 @app.route("/")
 def home():
-  return "it works!"
+  return "it works!!"
 
 @app.route("/<name>", methods=['POST'])
 @basic_auth.required
