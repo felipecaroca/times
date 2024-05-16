@@ -42,9 +42,6 @@ const DrawerNavigation = () => {
       ) : (
         <LoginScreen {...{ onSuccess }} />
       )}
-      {/*
-       <CameraComponent />
-      */}
     </Loading>
   )
 }
