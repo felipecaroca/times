@@ -12,6 +12,9 @@ export class RacewayModel extends BaseModel {
   @Field()
   coords: string
 
+  @Field({ nullable: true })
+  logo?: string
+
   @Field(() => [BetterTimeModel], { nullable: 'itemsAndList' })
   betterTimes?: BetterTimeModel[]
 }

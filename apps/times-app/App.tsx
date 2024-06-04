@@ -1,7 +1,7 @@
 import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { NativeBaseProvider, StatusBar } from 'native-base'
-import { NavigationContainer } from '@react-navigation/native'
 
 import { navigationRef } from './lib/navigation.lib'
 import DrawerNavigation from './navigation/DrawerNavigation'

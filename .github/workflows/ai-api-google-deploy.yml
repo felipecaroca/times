@@ -1,4 +1,4 @@
-name: Deploy to GCP App Engine
+name: Deploy AI API to GCP App Engine
 
 on:
   push:

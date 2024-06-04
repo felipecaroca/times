@@ -9,6 +9,7 @@ type RacewayModel {
   deletedAt: DateTime
   name: String!
   coords: String!
+  logo: String
   betterTimes: [BetterTimeModel]
 }
 

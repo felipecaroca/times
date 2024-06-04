@@ -7,7 +7,7 @@ import { UserModel } from './models/user.model'
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly prismaService: PrismaService) { }
+  constructor(private readonly prismaService: PrismaService) {}
 
   async getBySub(sub: string): Promise<UserModel> {
     return this.prismaService.user.findFirst({
